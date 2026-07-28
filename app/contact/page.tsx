@@ -6,6 +6,14 @@ export const metadata: Metadata = {
   title: "Contact — MALBA_REE | Hyderabad",
   description:
     "Visit, call or message MALBA_REE in Hyderabad. We'd love to hear from you.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact — MALBA_REE | Hyderabad",
+    description:
+      "Visit, call or message MALBA_REE in Hyderabad. We'd love to hear from you.",
+    url: `${SITE.url}/contact`,
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+  },
 };
 
 export default function ContactPage() {

@@ -52,7 +52,15 @@ export default function HomePage() {
           </div>
           <div className="hero-visual">
             <div className="video-wrapper">
-              <video className="hero-video" autoPlay muted loop playsInline>
+              <video
+                className="hero-video"
+                autoPlay
+                muted
+                loop
+                playsInline
+                aria-label="MALBA_REE Kerala-style malba being poured and layered"
+                poster="/images/dryb.png"
+              >
                 <source src="/images/malbavideo.mp4" type="video/mp4" />
               </video>
             </div>

@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
+import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About — MALBA_REE | Kerala Heritage, Hyderabad Roots",
   description:
     "The story behind MALBA_REE — Kerala flavours, modern hospitality, and a mission to serve Hyderabad the most authentic malba experience.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About — MALBA_REE | Kerala Heritage, Hyderabad Roots",
+    description:
+      "The story behind MALBA_REE — Kerala flavours, modern hospitality, and a mission to serve Hyderabad the most authentic malba experience.",
+    url: `${SITE.url}/about`,
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+  },
 };
 
 const CARDS = [

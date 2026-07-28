@@ -14,7 +14,12 @@ export default function MalbaCard({ malba }: { malba: Malba }) {
         {malba.badge && <span className="badge">{malba.badge}</span>}
         <div className="sunburst" />
         <div className="malba-emoji">
-          <Image src={malba.image} alt={malba.name} width={260} height={220} />
+          <Image
+            src={malba.image}
+            alt={`${malba.name} — Kerala-style malba, MALBA_REE Hyderabad`}
+            width={260}
+            height={220}
+          />
         </div>
       </div>
       <div className="malba-body">

@@ -18,7 +18,7 @@ export const NAV = [
 ];
 
 // TODO: replace with your real WhatsApp Business number (country code + number, no + or spaces)
-export const WHATSAPP_NUMBER = "+918593821281";
+export const WHATSAPP_NUMBER = "919000000000";
 
 export const SITE = {
   name: "MALBA_REE",
@@ -26,6 +26,10 @@ export const SITE = {
   phone: "+91 85938 21281",
   email: "hello@malbaree.in",
   address: "Hyderabad, Telangana, India",
+  // Pulled from the Google Maps embed already on the Contact page
+  geo: { lat: 17.441457283454934, lng: 78.35521207316162 },
+  // TODO: fill in real social profile URLs (used in Organization schema "sameAs")
+  socials: [] as string[],
 };
 
 export const MALBAS: Malba[] = [

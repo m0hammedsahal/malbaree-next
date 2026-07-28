@@ -1,0 +1,14 @@
+{
+  "name": "MALBA_REE — Kerala Style Malba & Thick Milkshakes",
+  "short_name": "MALBA_REE",
+  "description": "Hyderabad's most loved Kerala-style malba. Rich, creamy and loaded with authentic Kerala flavours.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFD600",
+  "theme_color": "#FFD600",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

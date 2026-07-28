@@ -2,11 +2,20 @@ import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import FranchiseForm from "@/components/FranchiseForm";
 import FaqItem from "@/components/FaqItem";
+import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Franchise — Own a MALBA_REE | Kerala Malba Franchise",
   description:
     "Start your own MALBA_REE franchise. Low investment, high demand, full training, marketing and store-setup support. Enquire now.",
+  alternates: { canonical: "/franchise" },
+  openGraph: {
+    title: "Franchise — Own a MALBA_REE | Kerala Malba Franchise",
+    description:
+      "Start your own MALBA_REE franchise. Low investment, high demand, full training, marketing and store-setup support. Enquire now.",
+    url: `${SITE.url}/franchise`,
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+  },
 };
 
 const STATS = [
@@ -32,9 +41,23 @@ const FAQS = [
   { q: "Which cities are you expanding to?", a: "Telangana, Andhra Pradesh, Karnataka and Tamil Nadu first — then pan-India." },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 export default function FranchisePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <section className="franchise-hero">
         <div className="blob" style={{ width: 380, height: 380, background: "rgba(255,214,0,.3)", top: -80, right: -80 }} />
         <div className="blob" style={{ width: 320, height: 320, background: "rgba(198,40,40,.3)", bottom: -80, left: -40 }} />
