@@ -11,7 +11,6 @@ export default function MalbaCard({ malba }: { malba: Malba }) {
   return (
     <Reveal as="div" className="malba-card">
       <div className="malba-img">
-        {malba.badge && <span className="badge">{malba.badge}</span>}
         <div className="sunburst" />
         <div className="malba-emoji">
           <Image

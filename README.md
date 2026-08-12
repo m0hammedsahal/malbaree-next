@@ -14,10 +14,27 @@ Open http://localhost:3000
 ## Structure
 
 - `app/` — pages (`/`, `/menu`, `/about`, `/franchise`, `/contact`) + `layout.tsx` (fonts, header/footer, SEO metadata, JSON-LD)
-- `components/` — Header, Footer, WhatsAppFloat, ToastProvider (toasts), Reveal (scroll-reveal), MalbaCard, MenuGrid (search/filter), FaqItem, ContactForm, FranchiseForm
-- `lib/data.ts` — nav links, product list, WhatsApp number, site info (single source of truth)
-- `app/globals.css` — your original `style.css`, copied over verbatim, plus a couple of small utility classes replacing the old Tailwind-CDN arbitrary classes (`ml-[20px]`, `p-[13px] md:p-[24px]`)
-- `public/images/` — all product images + hero video + logo, carried over from the original `images/` folder
+- `components/` — Header, Footer, WhatsAppFloat, ToastProvider (toasts), Reveal (scroll-reveal), MalbaCard (homepage highlight cards), MenuBoard (full categorized Food/Drinks menu, search + tabs), FaqItem, ContactForm, FranchiseForm
+- `lib/data.ts` — nav links, homepage highlight products (`MALBAS`), the **full real menu** (`MENU_CATEGORIES`, `ADD_ONS`), WhatsApp number, site info (single source of truth)
+- `app/globals.css` — your original `style.css`, copied over verbatim, plus utility classes for the ad-hoc Tailwind-CDN arbitrary classes and the new menu-board layout
+- `public/images/` — all product images + hero video + logo
+- `public/images/menu/` — category photos cropped directly from your uploaded menu boards (see "Menu photos" below)
+
+## Menu (matches your printed menu boards exactly)
+
+`/menu` shows the **real, full menu** — 13 categories across two boards (Food / Drinks), each with the item names and prices exactly as printed on your uploaded menu photos, filterable via tabs and a search box.
+
+**Design**: each board renders as a large "menu card" panel — dark forest-green for Food, warm gold for Drinks — echoing the two-tone look of your original printed menu boards. Category photos sit in circular medallion frames with a slow-spinning dashed ring, alternating left/right down the page, with dotted-swirl background texture and dotted leader lines between item names and prices (`components/MenuBoard.tsx`, styles in `app/globals.css` under "Premium Menu Board"). Structured data (`Menu`/`MenuSection`/`MenuItem` JSON-LD with real prices) matches.
+
+**Menu photos**: since you didn't have separate product photography for most items (wraps, fries, burgers, thickshakes, mojitos, etc.), each category photo was cropped directly out of your two uploaded menu-board images, then upscaled ~2.2x and sharpened to look reasonable on the web. Source resolution was limited (one image was a 540px-wide phone screenshot), so image quality is good-enough-for-launch but not print-quality — most noticeably the Sundae photo, which was cut off at the bottom of the screenshot it was cropped from. **If you have the original, full-resolution food photography (or can shoot fresh photos), swapping the files in `public/images/menu/` will noticeably sharpen things up** — same filenames, so no code changes needed:
+```
+wrap_chicken.jpg, loaded_fries_chicken.jpg, burger.jpg,
+wrap_veg.jpg, loaded_fries_veg.jpg, french_fries.jpg,
+malba.jpg, avil_milk.jpg, thickshake.jpg, fresh_juice.jpg,
+premium_mix.jpg, mojitos.jpg, sundae.jpg
+```
+
+The homepage "Signature Malbas" section still uses the 5 individual high-res malba product renders you originally supplied (Mango, Tender Coconut, Dates, Chikku, Avocado) as a curated highlight — the old "Special Dryfruit Malba" item was removed since it isn't on your current menu, and Fig Malba (new on the menu) only appears on the full `/menu` page since there's no individual product photo for it yet.
 
 ## SEO pass (favicon, OG image, structured data)
 
@@ -45,11 +62,10 @@ Open http://localhost:3000
 ## Things to finish before launch
 
 1. **WhatsApp number** — update `WHATSAPP_NUMBER` in `lib/data.ts` (currently a placeholder).
-2. **Prices** — the original design had `Rs` as a placeholder price chip with no number on every product card (`lib/data.ts` → `price` field). Fill in real prices.
-3. **`public/og-image.jpg`** — a 1200×630px social-share image referenced in `app/layout.tsx`. Not included since it wasn't in the uploaded assets.
-4. **`public/favicon.png` doubling as apple-touch-icon** — works, but for best results generate a dedicated 180×180 apple-touch-icon.
-5. The homepage (`/`) currently ends after the franchise CTA section — the uploaded `index.html` had a stray copy of the contact section appended at the bottom (duplicate of `contact.html`), which looked unintentional, so it was left out of the homepage and kept only on `/contact`. Say the word if you actually want it on both.
-6. Menu filter categories (`signature` / `premium`) were inferred from the one "Signature" badge in the original markup — the original `data-tag`/`data-name` attributes referenced by `script.js`'s filter logic weren't actually present on any card, so the filter didn't work in the static version. It's now fully functional in `lib/data.ts` — adjust tags per product as needed.
+2. **Menu photo quality** — see "Menu photos" above; swap in higher-res photography when you have it, especially for the Sundae category.
+3. **`app/favicon.png` doubling as apple-touch-icon** — works, but for best results generate a dedicated 180×180 apple-touch-icon from real brand artwork.
+4. The homepage (`/`) currently ends after the franchise CTA section — the uploaded `index.html` had a stray copy of the contact section appended at the bottom (duplicate of `contact.html`), which looked unintentional, so it was left out of the homepage and kept only on `/contact`. Say the word if you actually want it on both.
+5. **"Premium Mix" item names** — `Abooda (Mango, Dates, Sharjah)` was transcribed exactly as printed on your menu photo; if "Sharjah" is a typo (e.g. for a different ingredient), fix it in `lib/data.ts`.
 
 ## Build
 

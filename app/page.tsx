@@ -12,7 +12,7 @@ const WHY = [
 ];
 
 const REVIEWS = [
-  { text: "The Dryfruit Malba is unreal — thick, rich, exactly what Kerala tastes like.", author: "Aisha R." },
+  { text: "The Avocado Malba is unreal — thick, rich, exactly what Kerala tastes like.", author: "Aisha R." },
   { text: "Mango Malba beats every milkshake in Hyderabad. Period.", author: "Karthik S." },
   { text: "Tender Coconut Malba feels like a hug from Kerala. Obsessed.", author: "Sneha M." },
 ];

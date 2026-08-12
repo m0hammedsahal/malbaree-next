@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import MenuGrid from "@/components/MenuGrid";
-import { MALBAS, SITE } from "@/lib/data";
+import MenuBoard from "@/components/MenuBoard";
+import { MENU_CATEGORIES, SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Menu — MALBA_REE | Kerala Malba & Thick Milkshakes",
+  title: "Menu — MALBA_REE | Malba, Milkshakes, Wraps, Burgers & More",
   description:
-    "Explore signature Kerala-style malbas: Tender Coconut, Mango, Dates, Chikku, Avocado and our Special Dryfruit Malba.",
+    "Full MALBA_REE menu: Kerala-style Malba, Avil Milk, Thickshakes, Fresh Juice, Premium Mix, Mojitos, Wraps, Loaded Fries, Burgers and French Fries.",
   alternates: { canonical: "/menu" },
   openGraph: {
-    title: "Menu — MALBA_REE | Kerala Malba & Thick Milkshakes",
+    title: "Menu — MALBA_REE | Malba, Milkshakes, Wraps, Burgers & More",
     description:
-      "Explore signature Kerala-style malbas: Tender Coconut, Mango, Dates, Chikku, Avocado and our Special Dryfruit Malba.",
+      "Full MALBA_REE menu: Kerala-style Malba, Avil Milk, Thickshakes, Fresh Juice, Premium Mix, Mojitos, Wraps, Loaded Fries, Burgers and French Fries.",
     url: `${SITE.url}/menu`,
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
@@ -20,16 +20,20 @@ const menuJsonLd = {
   "@context": "https://schema.org",
   "@type": "Menu",
   name: "MALBA_REE Menu",
-  hasMenuSection: {
+  hasMenuSection: MENU_CATEGORIES.map((cat) => ({
     "@type": "MenuSection",
-    name: "Signature Malbas",
-    hasMenuItem: MALBAS.map((m) => ({
+    name: cat.title,
+    image: `${SITE.url}${cat.image}`,
+    hasMenuItem: cat.items.map((item) => ({
       "@type": "MenuItem",
-      name: m.name,
-      description: m.description,
-      image: `${SITE.url}${m.image}`,
+      name: item.name,
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "INR",
+        price: item.price.replace(/[^\d.]/g, "") || undefined,
+      },
     })),
-  },
+  })),
 };
 
 export default function MenuPage() {
@@ -46,15 +50,15 @@ export default function MenuPage() {
           <p className="eyebrow">Our Menu</p>
           <h1>Sip the Taste of Kerala</h1>
           <p>
-            Slow-blended, layered &amp; topped with cream — every glass is
-            built with Kerala love.
+            Malba, milkshakes, mojitos, wraps, burgers &amp; more — every
+            plate and glass made fresh daily.
           </p>
         </div>
       </section>
 
-      <section className="section" style={{ paddingTop: 40 }}>
-        <div className="container">
-          <MenuGrid />
+      <section className="section" style={{ paddingTop: 8 }}>
+        <div className="container" style={{ maxWidth: 880 }}>
+          <MenuBoard />
         </div>
       </section>
     </>
