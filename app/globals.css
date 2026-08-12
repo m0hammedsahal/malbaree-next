@@ -198,7 +198,7 @@ img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 h1,h2,h3,h4,.font-display{font-family:var(--font-display);letter-spacing:.01em;font-weight:400}
 .font-script{font-family:var(--font-script)}
-.container{max-width:1152px;margin:0 auto;padding:0 24px}
+.container{max-width:1152px;margin:0 auto;padding:0 2px}
 .container-sm{max-width:768px;margin:0 auto;padding:0 24px}
 .text-center{text-align:center}
 .text-brand-red{color:var(--brand-red)}

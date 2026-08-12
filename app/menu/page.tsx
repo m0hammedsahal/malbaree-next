@@ -56,7 +56,7 @@ export default function MenuPage() {
         </div>
       </section>
 
-      <section className="section" style={{ paddingTop: 8 }}>
+      <section className="section" style={{ paddingTop: 8, paddingRight: 0, paddingLeft: 0, }}>
         <div className="container" style={{ maxWidth: 880 }}>
           <MenuBoard />
         </div>

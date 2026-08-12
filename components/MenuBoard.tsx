@@ -48,7 +48,7 @@ export default function MenuBoard() {
         ))}
       </div>
 
-      <div className="menu-search-wrap">
+      <div className="menu-search-wrap" style={{ padding: 0 }}>
         <input
           type="text"
           placeholder="Search the menu…"
